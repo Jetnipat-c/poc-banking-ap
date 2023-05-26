@@ -1,0 +1,19 @@
+services:
+  rabbitmq:
+    image: rabbitmq:3-management
+    ports:
+      - '5672:5672'
+      - '15672:15672'
+    volumes:
+      - 'rabbitmq_data:/data'
+
+  mongo:
+    image: mongo:4.4.0-bionic
+    restart: always
+    ports:
+      - 27017:27017
+    volumes:
+      - ./data:/data/db
+
+volumes:
+  rabbitmq_data:
